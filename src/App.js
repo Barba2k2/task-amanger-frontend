@@ -1,17 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import TaskItem from "./components/TaskItem";
 
 const App = () => {
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    if (mounted.current === false) {
-      mounted.current = true;
-    } else {
-      console.log("component was updated!");
-    }
-  });
-
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -24,6 +16,20 @@ const App = () => {
       isCompleted: false,
     },
   ]);
+
+  const fetchTasks = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:8000/tasks");
+
+      setTasks(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   const handleCleanTasks = () => {
     setTasks([]);
