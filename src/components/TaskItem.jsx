@@ -8,7 +8,7 @@ const TaskItem = ({ task }) => {
       <div className="task-description">
         <label
           className={
-            task.icCompleted
+            task.isCompleted
               ? "checkbox-container-completed"
               : "checkbox-container"
           }
@@ -16,7 +16,7 @@ const TaskItem = ({ task }) => {
           {task.description}
           <input type="checkbox" defaultChecked={task.isCompleted} />
           <span
-            className={task.icCompleted ? "checkmark-completed" : "checkmark"}
+            className={task.isCompleted ? "checkmark completed" : "checkmark"}
           ></span>
         </label>
       </div>
