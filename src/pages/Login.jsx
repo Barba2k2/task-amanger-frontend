@@ -10,13 +10,13 @@ const Login = () => {
 
   const handleSignInClick = () => {
     navigate("/");
-  }
+  };
 
   return (
     <div className="login-container">
       <img src={logo} alt="logo" />
       <div className="button-container">
-        <CustomButton>Entrar</CustomButton>
+        <CustomButton onClick={handleSignInClick}>Entrar</CustomButton>
       </div>
     </div>
   );
